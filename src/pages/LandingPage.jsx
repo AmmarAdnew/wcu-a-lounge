@@ -7,7 +7,6 @@ const LandingPage = () => {
     <>
       <Navbar />
       <Hero />
-
       <Footer />
     </>
   );
