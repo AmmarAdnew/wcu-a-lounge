@@ -11,6 +11,8 @@ const AdminNavBar = () => {
     setMenuOpen((prev) => !prev);
   };
 
+  const user = auth.currentUser;
+
   const toggleProfile = () => {
     setProfileOpen((prev) => !prev);
   };
@@ -26,7 +28,7 @@ const AdminNavBar = () => {
   }
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900 z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
@@ -54,13 +56,13 @@ const AdminNavBar = () => {
 
             {profileOpen && (
               <div
-                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg dark:bg-gray-800"
+                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg dark:bg-gray-800 z-10"
                 id="user-dropdown"
               >
                 <div className="px-4 py-3">
                   <p className="text-sm text-gray-900 dark:text-white">Bonnie Green</p>
                   <p className="text-sm font-medium text-gray-600 truncate dark:text-gray-400">
-                    name@flowbite.com
+                    {user.email}
                   </p>
                 </div>
                 <ul className="py-2">

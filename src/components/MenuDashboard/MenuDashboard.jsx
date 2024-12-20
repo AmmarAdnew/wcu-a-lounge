@@ -110,7 +110,7 @@ const MenuDashboard = () => {
                 image: selectedImage,
             });
             setIsModalOpen(false); // Close modal after adding
-            getMenuItems(); // Refresh the list
+            // getMenuItems(); // Refresh the list
         } catch (error) {
             console.log(error);
         }
@@ -122,7 +122,7 @@ const MenuDashboard = () => {
                 const itemDoc = doc(db, 'MenuItems', id);
                 await deleteDoc(itemDoc);
                 alert('Item deleted successfully!');
-                getMenuItems();
+                // getMenuItems();
             } catch (error) {
                 console.error('Error deleting item:', error);
             }
