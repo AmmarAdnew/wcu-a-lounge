@@ -1,63 +1,101 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase"; // Adjust the import path as needed
 
-// const MenuCard = ({ image, name, desc, price, onReadMore }) => {
+const MenuCard = ({ item, handleReadMore, toggleModal, deleteItem }) => {
+  const toggleAvailability = async () => {
+    try {
+      const itemDoc = doc(db, "MenuItems", item.id);
+      await updateDoc(itemDoc, {
+        isAvailable: !item.isAvailable, // Toggle the boolean value
+      });
+    } catch (error) {
+      console.error("Error toggling availability:", error);
+    }
+  };
 
-const MenuCard = ({ name, desc, price}) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700">
-      <img
-        className="w-full h-48 object-cover"
-        // src={image}
-        alt={name}
-      />
-      <div className="p-6">
-        <h5 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{name}</h5>
-        <p className="text-gray-700 dark:text-gray-400 mb-4">{desc}</p>
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-indigo-500">ETB {price}</h3>
+    <div
+      className={`max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 dark:bg-gray-800 dark:border-gray-700 ${
+        !item.isAvailable ? "opacity-80" : "" // Apply opacity if item is disabled
+      }`}
+    >
+      {/* Image Section */}
+      <div className="relative h-48 w-full">
+        <img
+          className="w-full h-full object-cover"
+          src={item.image || "https://via.placeholder.com/300"} // Fallback image if item.image is null
+          alt={item.Name}
+        />
+        {!item.isAvailable && (
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <span className="text-white text-lg font-semibold">Unavailable</span>
+          </div>
+        )}
+      </div>
+
+      {/* Content Section */}
+      <div className="p-5">
+        {/* Title */}
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {item.Name}
+        </h5>
+
+        {/* Description */}
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {item.Description.length > 100 ? (
+            <>
+              {item.Description.substring(0, 100)}...
+              <button
+                onClick={() => handleReadMore(item)}
+                className="text-primary-light hover:text-primary-dark underline ml-2"
+              >
+                Read More
+              </button>
+            </>
+          ) : (
+            item.Description
+          )}
+        </p>
+
+        {/* Category and Price */}
+        <div className="flex justify-between items-center mb-4">
+          <span className="bg-primary-light text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
+            {item.Category}
+          </span>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+            ETB {item.Price}
+          </h3>
         </div>
-        <button
-          onClick={onReadMore}
-          className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:focus:ring-indigo-800"
-        >
-          Read More
-          <svg
-            className="w-4 h-4 ml-2 rtl:rotate-180"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
+
+        {/* Action Buttons */}
+        <div className="flex justify-between gap-2">
+          <button
+            onClick={() => toggleModal(item)}
+            className="flex-1 text-white bg-primary-dark hover:bg-primary-light focus:ring-4 focus:outline-none focus:ring-primary-light font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors"
           >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </button>
+            Edit
+          </button>
+          <button
+            onClick={() => deleteItem(item.id)}
+            className="flex-1 text-white bg-accent- hover:bg-accent-dark focus:ring-4 focus:outline-none focus:ring-accent-light font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors"
+          >
+            Delete
+          </button>
+          <button
+            onClick={toggleAvailability}
+            className={`flex-1 text-white ${
+              item.isAvailable
+                ? "bg-secondary-DEFAULT hover:bg-secondary-dark"
+                : "bg-yellow-600 hover:bg-yellow-700"
+            } focus:ring-4 focus:outline-none focus:ring-secondary-light font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors`}
+          >
+            {item.isAvailable ? "Disable" : "Enable"}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-MenuCard.propTypes = {
-//   image: PropTypes.string.isRequired, // URL for the image
-  name: PropTypes.string.isRequired, // Name of the menu item
-  desc: PropTypes.string.isRequired, // Description of the menu item
-  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // Price of the menu item
-  onReadMore: PropTypes.func, // Callback for the "Read More" button
-};
-
-MenuCard.defaultProps = {
-  onReadMore: () => alert('Read more clicked!'),
-};
-
 export default MenuCard;
-
-
-
-
-
-

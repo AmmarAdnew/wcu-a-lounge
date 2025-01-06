@@ -8,6 +8,7 @@ import MenuManagement from "./components/MenuManagement";
 import OrderManagement from "./components/OrderManagement";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
+import "./components/Loader.css";
 
 function ProtectedRoute({ children, isAuthenticated }) {
   return isAuthenticated ? children : <Navigate to="/admin" replace />;
@@ -30,7 +31,19 @@ function App() {
 
   // Show a loading indicator while waiting for the auth state
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="center">
+      <div className="content">
+      {[...Array(2)].map((_, i) => (
+        <div key={i} className="bars">
+          {[...Array(7)].map((_, b) => (
+            <div key={b} className="bar" />
+          ))}
+        </div>
+      ))}
+    </div>;
+
+    </div>
+    
   }
 
   // If there's no user, navigate to the admin login
