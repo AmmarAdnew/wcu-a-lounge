@@ -9,6 +9,8 @@ import OrderManagement from "./components/OrderManagement";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import "./components/Loader.css";
+import AppPage from "./pages/AppPage";
+import MenuPage from "./pages/MenuPage";
 
 function ProtectedRoute({ children, isAuthenticated }) {
   return isAuthenticated ? children : <Navigate to="/admin" replace />;
@@ -31,19 +33,20 @@ function App() {
 
   // Show a loading indicator while waiting for the auth state
   if (isLoading) {
-    return <div className="center">
-      <div className="content">
-      {[...Array(2)].map((_, i) => (
-        <div key={i} className="bars">
-          {[...Array(7)].map((_, b) => (
-            <div key={b} className="bar" />
+    return (
+      <div className="center">
+        <div className="content">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="bars">
+              {[...Array(7)].map((_, b) => (
+                <div key={b} className="bar" />
+              ))}
+            </div>
           ))}
         </div>
-      ))}
-    </div>;
-
-    </div>
-    
+        ;
+      </div>
+    );
   }
 
   // If there's no user, navigate to the admin login
@@ -52,9 +55,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<LandingPage />} />
+          <Route path="/app" element={<AppPage />} />
+          <Route path="/Menu" element={<MenuPage />} />
           <Route path="/admin" element={<AdminLogIn />} />
           <Route path="/userlogin" element={<UserLogIn />} />
-          <Route path="*" element={<Navigate to="/admin" replace />} /> {/* Redirect any other route to admin */}
+          <Route path="*" element={<Navigate to="/admin" replace />} />{" "}
+          {/* Redirect any other route to admin */}
         </Routes>
       </BrowserRouter>
     );
@@ -67,7 +73,8 @@ function App() {
         <Route index element={<LandingPage />} />
         <Route path="/admin" element={<AdminLogIn />} />
         <Route path="/userlogin" element={<UserLogIn />} />
-
+        <Route path="/app" element={<AppPage />} />
+        <Route path="/Menu" element={<MenuPage />} />
         {/* Protected Routes */}
         <Route
           path="/admindashboard"
@@ -93,7 +100,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-         <Route path="*" element={<Navigate to="/admindashboard" replace />} /> {/* Redirect any other route to admindashboard */}
+        <Route path="*" element={<Navigate to="/admindashboard" replace />} />{" "}
+        {/* Redirect any other route to admindashboard */}
       </Routes>
     </BrowserRouter>
   );
