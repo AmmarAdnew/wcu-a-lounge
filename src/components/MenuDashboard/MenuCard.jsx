@@ -78,16 +78,16 @@ const MenuCard = ({ item, handleReadMore, toggleModal, deleteItem }) => {
           </button>
           <button
             onClick={() => deleteItem(item.id)}
-            className="flex-1 text-white bg-accent- hover:bg-accent-dark focus:ring-4 focus:outline-none focus:ring-accent-light font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors"
+            className="flex-1 text-white bg-red-400 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-accent-light font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors"
           >
             Delete
           </button>
           <button
             onClick={toggleAvailability}
-            className={`flex-1 text-white ${
+            className={`flex-1  ${
               item.isAvailable
-                ? "bg-secondary-DEFAULT hover:bg-secondary-dark"
-                : "bg-yellow-600 hover:bg-yellow-700"
+                ? " text-secondary-light  hover:bg-secondary-dark hover:text-white"
+                : "bg-yellow-600 text-white hover:bg-yellow-700 "
             } focus:ring-4 focus:outline-none focus:ring-secondary-light font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors`}
           >
             {item.isAvailable ? "Disable" : "Enable"}

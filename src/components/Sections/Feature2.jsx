@@ -20,16 +20,16 @@ const Feature2 = () => {
   }, []);
 
   return (
-    <section className="bg-gradient-to-r from-green-400 to-blue-500 dark:from-gray-800 dark:to-gray-900">
+    <section className="bg-gradient-to-r from-black to-gray-800 dark:from-gray-800 dark:to-gray-900">
       <div className="gap-8 items-center py-12 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-20 lg:px-6">
         <div className="feature2-image hidden md:block">
-          <img
-            className="w-full dark:hidden rounded-lg shadow-xl"
+          {/* <img
+            className="w-full block dark:hidden rounded-lg shadow-xl"
             src="https://images.unsplash.com/photo-1512621776951-5a9479c8a3c6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Delicious food"
-          />
+          /> */}
           <img
-            className="w-full hidden dark:block rounded-lg shadow-xl"
+            className="w-full rounded-lg shadow-xl"
             src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Delicious food"
           />

@@ -27,7 +27,7 @@ const OrderTable = ({ currentOrders, handleStatusChange }) => {
       case "pending":
         return {
           colorClass:
-            "bg-accent-warning text-accent-warning dark:bg-accent-warning/10 dark:text-accent-warning",
+            "bg-accent-warning/20 text-accent-warning dark:bg-accent-warning/10 dark:text-accent-warning",
           icon: faClock,
         };
       case "Ready":
