@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TestimonialCard from "./TestimonialCard"; // Import the TestimonialCard component
+import ScrollReveal from "scrollreveal";
 
 const Testimonial = () => {
   const testimonials = [
@@ -11,30 +12,48 @@ const Testimonial = () => {
       avatarUrl:
         "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
     },
+    {
+      quote:
+        "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.",
+      name: "Jacob Jones",
+      role: "Digital Marketer",
+      avatarUrl:
+        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
+    },
+    {
+      quote:
+        "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.",
+      name: "Jacob Jones",
+      role: "Digital Marketer",
+      avatarUrl:
+        "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
+    },
     // Add more testimonials here
   ];
+
+  useEffect(() => {
+    // Initialize ScrollReveal
+    const sr = ScrollReveal({
+      origin: 'bottom',
+      distance: '60px',
+      duration: 1000,
+      delay: 200,
+      reset: true,
+    });
+
+    // Apply ScrollReveal to elements
+    sr.reveal('.testimonial-title', { delay: 200 });
+    sr.reveal('.testimonial-grid', { delay: 400, interval: 200 });
+  }, []);
 
   return (
     <section className="py-12 bg-gray-50 sm:py-16 lg:py-20">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <div className="text-center">
-            <p className="text-lg font-medium text-gray-600 font-pj">
-              2,157 people have said how good Rareblocks
-            </p>
-            <h2 className="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj">
-              Our happy clients say about us
+            <h2 className="testimonial-title mt-4 text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj">
+              Our happy customers say about us
             </h2>
-          </div>
-
-          <div className="mt-8 text-center md:mt-16 md:order-3">
-            <a
-              href="#"
-              title=""
-              className="pb-2 text-base font-bold leading-7 text-gray-900 transition-all duration-200 border-b-2 border-gray-900 hover:border-gray-600 font-pj focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2 hover:text-gray-600"
-            >
-              Check all 2,157 reviews
-            </a>
           </div>
 
           <div className="relative mt-10 md:mt-24 md:order-2">
@@ -48,7 +67,7 @@ const Testimonial = () => {
               ></div>
             </div>
 
-            <div className="relative grid max-w-lg grid-cols-1 gap-6 mx-auto md:max-w-none lg:gap-10 md:grid-cols-3">
+            <div className="testimonial-grid relative grid max-w-lg grid-cols-1 gap-6 mx-auto md:max-w-none lg:gap-10 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <TestimonialCard
                   key={index}

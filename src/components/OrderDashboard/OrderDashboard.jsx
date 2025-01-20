@@ -48,6 +48,8 @@ const OrderDashboard = () => {
 
   useEffect(() => {
     let filtered = [...orders];
+  
+    // Apply filters
     if (filterStatus !== "All") {
       filtered = filtered.filter((order) => order.status === filterStatus);
     }
@@ -58,8 +60,16 @@ const OrderDashboard = () => {
           order.customerName.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
+  
+    // Sort by timestamp in descending order (most recent first)
+    filtered.sort((a, b) => {
+      const timestampA = a.timestamp?.seconds || 0;
+      const timestampB = b.timestamp?.seconds || 0;
+      return timestampB - timestampA; // Descending order
+    });
+  
     setFilteredOrders(filtered);
-    setCurrentPage(1);
+    setCurrentPage(1); // Reset to the first page after filtering/sorting
   }, [orders, searchTerm, filterStatus]);
 
   const handleStatusChange = async (orderId, newStatus) => {

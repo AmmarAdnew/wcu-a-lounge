@@ -11,6 +11,7 @@ import { auth } from "./firebase";
 import "./components/Loader.css";
 import AppPage from "./pages/AppPage";
 import MenuPage from "./pages/MenuPage";
+import LogIn from "./pages/user/Login";
 
 function ProtectedRoute({ children, isAuthenticated }) {
   return isAuthenticated ? children : <Navigate to="/admin" replace />;
@@ -57,6 +58,7 @@ function App() {
           <Route index element={<LandingPage />} />
           <Route path="/app" element={<AppPage />} />
           <Route path="/Menu" element={<MenuPage />} />
+          <Route path="/User" element={<LogIn />} />
           <Route path="/admin" element={<AdminLogIn />} />
           <Route path="/userlogin" element={<UserLogIn />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />{" "}
@@ -75,6 +77,7 @@ function App() {
         <Route path="/userlogin" element={<UserLogIn />} />
         <Route path="/app" element={<AppPage />} />
         <Route path="/Menu" element={<MenuPage />} />
+
         {/* Protected Routes */}
         <Route
           path="/admindashboard"

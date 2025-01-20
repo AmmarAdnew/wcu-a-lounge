@@ -155,7 +155,7 @@ const MenuDashboard = () => {
           try {
             const itemDoc = doc(db, "MenuItems", id);
             await deleteDoc(itemDoc);
-            alert("Item deleted successfully!");
+            // alert("Item deleted successfully!");
             // getMenuItems();
           } catch (error) {
             console.error("Error deleting item:", error);
