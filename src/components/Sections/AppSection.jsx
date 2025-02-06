@@ -63,47 +63,49 @@ const AppSection = () => {
 //             Your browser does not support the video tag.
 //         </video>
 //       </header>
-    <section className="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
-      <div className="relative z-30 p-5 text-2xl text-white bg-transparent bg-opacity-50 rounded-xl">
-        <div className="z-30 relative max-w-3xl mx-auto text-center">
-          {/* Tagline */}
-          <p className="app-tagline inline-flex px-4 py-2 text-base text-gray-900 border border-gray-200 rounded-full font-pj">
-            Made by Developers, for A-PLUS Customers
-          </p>
 
-          {/* Heading */}
-          <h1 className="app-heading mt-5 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj">
-            Quality resources shared by the community
-          </h1>
+<section className="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
 
-          {/* Description */}
-          <p className="app-description
- max-w-md mx-auto mt-6 text-base leading-7 text-gray-600 font-inter">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vehicula massa in enim luctus. Rutrum arcu.
-          </p>
+  <div className="relative z-30 p-5 text-2xl text-white bg-transparent bg-opacity-50 rounded-xl">
+    <div className="z-30 relative max-w-3xl mx-auto text-center">
+      {/* Tagline */}
+      <p className="app-tagline inline-flex px-4 py-2 text-base text-gray-900 border border-gray-200 rounded-full font-pj">
+        Your Cravings, Just a Tap Away.
+      </p>
 
-          {/* Button with Gradient Animation */}
-          <div className="app-button relative inline-flex mt-10 group">
-            <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+      {/* Heading */}
+      <h1 className="app-heading mt-5 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj">
+        Discover Your City's Best Flavors
+      </h1>
 
-            <a
-              href="#"
-              title=""
-              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              role="button"
-            >
-              DOWNLOAD THE APP NOW
-            </a>
-          </div>
-        </div>
+      {/* Description */}
+      <p className="app-description max-w-md mx-auto mt-6 text-base leading-7 text-gray-800 font-inter">
+        Explore a wide variety of dishes, order from whereever you are and enjoy a delicious dining experience.
+      </p>
+
+      {/* Button with Gradient Animation */}
+      <div className="app-button relative inline-flex mt-10 group">
+        <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+
+        <a
+          href="/A-Plus.apk"
+          title="Download A-Plus App"
+          className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          role="button"
+          download
+        >
+          DOWNLOAD THE A-PLUS APP
+        </a>
       </div>
+    </div>
+  </div>
 
-      <video ref={videoRef} autoPlay loop muted className="absolute z-10 opacity-50 w-auto min-w-full min-h-full max-w-none">
-        <source src="/infinity-pool-display-pan.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </section>
-  );
+  <video ref={videoRef} autoPlay loop muted className="absolute z-10 opacity-50 w-auto min-w-full min-h-full max-w-none">
+    <source src="/infinity-pool-display-pan.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</section>
+  )
 };
 
 export default AppSection;

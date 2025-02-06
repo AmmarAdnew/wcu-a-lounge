@@ -6,10 +6,10 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: "aplus-lounge-service.firebaseapp.com",
-  projectId: "aplus-lounge-service",
+  projectId: import.meta.env.VITE_PRODUCT_ID,
   storageBucket: "aplus-lounge-service.firebasestorage.app",
   messagingSenderId: "186005173612",
-  appId: "1:186005173612:web:ade69fad086095b326ef49",
+  appId: import.meta.env.VITE_APP_ID,
   measurementId: "G-F4PBGXH3HB"
 };
 
